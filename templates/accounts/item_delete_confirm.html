@@ -1,0 +1,24 @@
+{% include 'index/base.html' %}
+
+{% block content %}
+  {% csrf_token %}
+<script type="text/javascript">
+    function test(message){
+        alert('inventory id: {{ item.id }} is deleted');
+    }
+</script>
+</head>
+
+<form method="post">
+  {% csrf_token %}
+  <h2> Are you sure to remove inventory id {{ item.id }}?</h2>
+  <button class="btn btn-danger" type="submit" onclick="test()">Delete</button>
+  <button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>
+</form>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+{% endblock content %}
+

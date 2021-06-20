@@ -1,0 +1,64 @@
+
+{% include 'index/base.html' %}
+
+{% block content %}
+
+<h1 style="font-family: Jua"><center>Inventory Item List</center></h1>
+<div class="container">
+
+
+
+<nav class="navbar" style="margin-left: 700px; margin-top: 30px">
+  <div class="container-fluid">
+    <form class="d-flex" action="/suhyun/search_basic" method="get" >
+
+      <input class ="form-control me-2"   type="search" name = "q"  placeholder=" search product location" aria-label="Search">
+
+        <button class="btn btn-outline-success"
+                style="background-color: #2ac1bc; color: #fff; border-color: #2ac1bc;" type="submit" value="Search">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+
+<h3 style="font-family: Jua"> Total items: {{total_items}}</h3>
+<table class="table table-striped">
+
+  <tr>
+     <th>ID  </th>
+     <th>Order </th>
+     <th>Product </th>
+      <th>QTY</th>
+     <th>Current Amount</th>
+     <th>Product Location</th>
+     <th> Update </th>
+
+
+  </tr>
+  <tr>
+
+
+  {% for item in items%}
+    <td> {{ item.id }} </td>
+    <td> {{ item.order }} </td>
+    <td> {{ item.product }} </td>
+      <td>{{ item.quantity }}</td>
+    <td> {{ item.current_amount }} </td>
+    <td> {{ item.product_location }} </td>
+    <td> <a class="btn btn-info" style="background-color: #2ac1bc" href ="{%url 'update_item' item.id %}" >Update  </a> <td>
+
+    </tr>
+
+  {%endfor%}
+
+</table>
+
+
+<a class = "btn btn-info pull-right"  style="background-color: #2ac1bc; color: #fff; border-color: #2ac1bc;" href="{% url 'add_item' %}"> New Inventory </a>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</div>
+
+{% endblock content %}

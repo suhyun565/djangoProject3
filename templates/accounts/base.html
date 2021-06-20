@@ -1,0 +1,40 @@
+<script src="${pageContext.request.contextPath}/resources/common/js/jquery-3.3.1.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.min.css">
+
+
+<!-- common CSS -->
+<link rel="stylesheet" href="<c:url value='/resources/common/css/common.css'/>" >
+<style>
+    .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+@font-face{
+	src: url("/static/fonts/BMJUA_ttf.ttf");
+    font-family: "Jua";
+ }
+
+ #jua_font{
+ font-family: "Jua";
+ }
+ a{
+     font-family: Jua;
+     font-weight: bold;
+ }
+</style>
+<body>
+
+	<div class="container-fluid">
+	{% block content %}
+
+
+
+	{% endblock %}
+    </div>
+
+</body>
+
+

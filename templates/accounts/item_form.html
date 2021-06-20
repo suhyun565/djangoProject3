@@ -1,0 +1,35 @@
+
+{% include 'index/base.html' %}
+
+{% block content %}
+<div class="container">
+<h1  style="font-family: Jua"> Update item</h1>
+
+  {% csrf_token %}
+<script type="text/javascript">
+    function update(message){
+        alert('update inventory id : {{ item.id }} ');
+    }
+</script>
+
+
+<form method="POST">
+  {% csrf_token %}
+      <label>Product</label> {{ form.product}} </br>
+      <label>Order</label> {{ form.order}} </br>
+      <label>QTY</label> {{ form.quantity}} </br>
+      <label>Current Amount</label> {{ form.current_amount}} </br>
+      <label>Product Location</label>{{ form.product_location}} </br>
+
+  <button class="btn btn-default" style="background-color: #2ac1bc; color: #fff;" type="submit" onclick="update()">Save</button>
+  <button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>
+</form>
+
+  {% if item %}
+      <a class="btn btn-danger" href="{%url 'delete_item' item.id %}">Delete</a>
+  {%endif%}
+
+
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% endblock content %}

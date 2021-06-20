@@ -1,0 +1,45 @@
+
+{% include 'index/base.html' %}
+
+{% block content %}
+
+
+<h1><center style="font-family: Jua">Product Filter</center></h1>
+<div class="container">
+
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+
+
+<table class="table table-striped">
+  <tr>
+     <th>ID </th>
+     <th>Name</th>
+     <th>Category</th>
+     <th>Price</th>
+
+  </tr>
+  <tr>
+  {% for item in filter.qs%}
+    <td> {{ item.id }} </td>
+    <td> {{ item.name }}</td>
+    <td> {{ item.category }}</td>
+    <td> {{ item.price }}</td>
+
+    </tr>
+  {%endfor%}
+</table>
+      <input type="button" value="close" onclick="self.close();" />
+
+
+
+
+    <div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</div>
+{% endblock content %}
