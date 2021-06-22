@@ -1,4 +1,6 @@
 from django.db import models
+from Inventory.models import Inventory
+
 
 # Create your models here.
 
@@ -23,21 +25,22 @@ class Product(models.Model):
 		return self.name
 
 
-
-
 class Order(models.Model):
 	STATUS = (
 			('Entering', 'Entering'),
 			('Releasing', 'Releasing'),
+			('NONE','NONE')
 			)
 	manager = models.ForeignKey(Manager, null=True, on_delete= models.SET_NULL)
-	product = models.ForeignKey(Product, null=True, on_delete= models.SET_NULL)
+	product = models.ForeignKey(Product, null=True, on_delete= models.SET_NULL,blank=True)
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
 	status = models.CharField(max_length=200, null=True, choices=STATUS)
 	count = models.IntegerField(default=0)
 
 	def __str__(self):
 		return self.product.name
+
+
 
 
 

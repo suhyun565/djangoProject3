@@ -79,14 +79,12 @@ def createOrder(request, pk):
 		formset = OrderFormSet(request.POST, instance=manager)
 		if formset.is_valid():
 			formset.save()
-			#with transaction.atomic():
-				#current_amount-=count
-				#inventory.save()
 			return redirect('/suhyun/home/')
 
 	context = {'form':formset}
 	return render(request, 'accounts/order_form.html', context)
 
+from django.contrib import messages
 
 def updateOrder(request, pk):
 

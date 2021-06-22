@@ -1,14 +1,14 @@
 from django.db import models
-from speedracer.models import Product, Order
 from django.utils import timezone
 from django.shortcuts import reverse
+from speedracer.models import *
 
 class Inventory(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE,blank=True,null=True)
-    quantity = models.PositiveIntegerField()
-    current_amount = models.FloatField(blank=True,default=0)
-    created = models.DateTimeField(blank=True)
+    product = models.ForeignKey('speedracer.Product', on_delete=models.CASCADE,null=True)
+    order = models.ForeignKey('speedracer.Order', on_delete=models.CASCADE,blank=True,null=True)
+    quantity = models.PositiveIntegerField(null=True)
+    current_amount = models.FloatField(blank=True,default=0,null=True)
+    created = models.DateTimeField(blank=True,null=True)
 
     def save(self, *args, **kwargs):
         if self.order.status == 'Entering':
